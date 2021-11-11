@@ -1,7 +1,8 @@
+import './public-path';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
+import './index.css';
 
 // 渲染函数
 const render = (props: any) => {
