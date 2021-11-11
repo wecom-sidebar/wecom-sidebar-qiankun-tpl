@@ -1,13 +1,24 @@
 import './public-path'
+import {ConfigProvider} from "antd";
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
+// 由于 antd 组件的默认文案是英文，所以需要修改为中文
+import zhCN from 'antd/lib/locale/zh_CN';
+
+import 'antd/dist/antd.css';
+
+const AppWrapper = (
+  <ConfigProvider locale={zhCN}>
+    <App />
+  </ConfigProvider>
+);
 
 // 渲染应用
 const render = (props: any) => {
   const { container } = props;
-  ReactDOM.render(<App />, container ? container.querySelector('#root') : document.querySelector('#root'));
+  const containerElement = container ? container.querySelector('#root') : document.querySelector('#root');
+  ReactDOM.render(AppWrapper, containerElement);
 }
 
 // 到处 qiankun 需要的生命周期钩子
