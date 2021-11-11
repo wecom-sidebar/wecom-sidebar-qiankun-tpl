@@ -12,6 +12,12 @@ registerMicroApps([
     container: '#sub-app-container',
     activeRule: '/#/react-app',
   },
+  {
+    name: 'sidebar-app',
+    entry: '//localhost:3002',
+    container: '#sub-app-container',
+    activeRule: '/#/sidebar-app',
+  }
 ]);
 
 start();
