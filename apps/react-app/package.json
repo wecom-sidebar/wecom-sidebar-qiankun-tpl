@@ -17,10 +17,9 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "BROWSER=none PORT=3001 react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "BROWSER=none PORT=3001 rescripts start",
+    "build": "rescriptss build",
+    "test": "rescripts test"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@rescripts/cli": "^0.0.16"
   }
 }
