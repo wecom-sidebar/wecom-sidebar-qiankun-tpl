@@ -1,22 +1,21 @@
 import React, {FC} from "react";
 import {Menu} from "antd";
-import {HomeOutlined, SettingOutlined, UsergroupAddOutlined, UserOutlined} from "@ant-design/icons";
+import {useHistory} from 'react-router-dom'
 import {Link} from "react-router-dom";
 
 const Nav: FC = () => {
+  const history = useHistory();
+
   return (
-    <Menu mode="horizontal">
-      <Menu.Item key="home" icon={<HomeOutlined/>}>
+    <Menu mode="horizontal" defaultSelectedKeys={[history.location.pathname]}>
+      <Menu.Item key="/">
         <Link to="/">首页</Link>
       </Menu.Item>
-      <Menu.Item key="actions" icon={<SettingOutlined/>}>
-        <Link to="/actions">操作</Link>
+      <Menu.Item key="/sidebar-app">
+        <Link to="/sidebar-app">sidebar-app</Link>
       </Menu.Item>
-      <Menu.Item key="externalUser" icon={<UserOutlined />}>
-        <Link to="/external-user">人</Link>
-      </Menu.Item>
-      <Menu.Item key="externalChat" icon={<UsergroupAddOutlined />}>
-        <Link to="/external-chat">群</Link>
+      <Menu.Item key="/react-app">
+        <Link to="/react-app">react-app</Link>
       </Menu.Item>
     </Menu>
   )

@@ -1,14 +1,20 @@
 import * as React from 'react'
 import {useEffect, useState} from 'react'
 import {fetchExternalChat} from '../api'
-import {jsSdk} from "../index";
 import {Spin} from "antd";
+import {useSelector} from "react-redux";
+import {GlobalState} from "../store";
 
 const ExternalChat: React.FC = () => {
+  const jsSdk = useSelector<GlobalState>(state => state.jsSdk);
+
   const [loading, setLoading] = useState<boolean>()
   const [externalChat, setExternalChat] = useState<ExternalChatResponse['group_chat'] | void>()
 
   const getExternalChatInfo = async () => {
+    if (!jsSdk) return
+
+    // @ts-ignore
     const res = await jsSdk.invoke<{chatId?: string}>('getCurExternalChat', {})
 
     if (!res || !res.chatId) return
@@ -26,6 +32,7 @@ const ExternalChat: React.FC = () => {
   }, [])
 
   const openUserProfile = (userId: string, type: 1 | 2) => {
+    // @ts-ignore
     return jsSdk.invoke('openUserProfile', {
       userid: userId,
       type,
