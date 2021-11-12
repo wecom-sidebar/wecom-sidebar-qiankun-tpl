@@ -16,8 +16,8 @@ const initPassProps = async (jsSdk: JsSDK) => {
 }
 
 // 启动 qiankun 的主应用
-const initQiankunMainApp = (jsSdk: JsSDK) => {
-  const passProps = initPassProps(jsSdk);
+const initQiankunMainApp = async (jsSdk: JsSDK) => {
+  const passProps = await initPassProps(jsSdk);
 
   // 添加 state 变更
   microAppStateActions.onGlobalStateChange((state, prev) => {
