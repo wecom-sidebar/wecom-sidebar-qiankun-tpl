@@ -23,15 +23,28 @@ const render = (props: any) => {
 
 // 到处 qiankun 需要的生命周期钩子
 export const bootstrap = async () => {
-  console.log('[sidebar-app] react app bootstraped');
+  console.log('[微应用 sidebar-app] bootstrap');
 }
 
 export const mount = async (props: any) => {
-  console.log('[sidebar-app] props from main framework', props);
+  props.onGlobalStateChange((state: any) => {
+    // state: 变更后的状态; prev 变更前的状态
+    console.log('微应用', state.jssdk);
+    state.jsSdk.invoke('sendChatMessage', {
+      msgtype: 'text',
+      text: {
+        content: 'hello'
+      }
+    });
+  });
+
+  // props.setGlobalState(state);
+  console.log('[微应用 sidebar-app] mount', props);
   render(props);
 }
 
 export const unmount = async (props: any) => {
+  console.log('[微应用 sidebar-app] unmount', props);
   const { container } = props;
   ReactDOM.unmountComponentAtNode(container ? container.querySelector('#root') : document.querySelector('#root'));
 }

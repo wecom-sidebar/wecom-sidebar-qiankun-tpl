@@ -12,15 +12,16 @@ const render = (props: any) => {
 
 // qiankun 微应用的导出函数
 export const bootstrap = async () => {
-  console.log('[react16] react app bootstraped');
+  console.log('[微应用 react-app] bootstrap');
 }
 
 export const mount = async (props: any) => {
-  console.log('[react16] props from main framework', props);
+  console.log('[微应用 react-app] mount', props);
   render(props);
 }
 
 export const unmount = async (props: any) => {
+  console.log('[微应用 react-app] unmount', props);
   const { container } = props;
   ReactDOM.unmountComponentAtNode(container ? container.querySelector('#root') : document.querySelector('#root'));
 }

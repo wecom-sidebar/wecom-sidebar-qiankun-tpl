@@ -10,8 +10,11 @@ import {invokeResMock, mockUserId, wxResMock} from "./mock";
 import {checkRedirect, createJsSdk, initSdk} from "./lib";
 
 import 'antd/dist/antd.css';
+import initQiankunMainApp from "./lib/utils/initQiankunMainApp";
 
 export const jsSdk = createJsSdk(wxResMock, invokeResMock);
+
+initQiankunMainApp();
 
 const AppWrapper = (
   <ConfigProvider locale={zhCN}>
