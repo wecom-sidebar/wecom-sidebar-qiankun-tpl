@@ -1,7 +1,11 @@
 import {createStore, Reducer} from "redux";
 
+export interface GlobalState {
+  jsSdk: any;
+}
+
 // 初始全局状态
-const initState = {
+const initState: GlobalState = {
   jsSdk: null,
 }
 

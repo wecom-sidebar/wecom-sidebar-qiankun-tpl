@@ -3,9 +3,10 @@ import {useEffect, useState} from 'react'
 import {fetchExternalChat} from '../api'
 import {Spin} from "antd";
 import {useSelector} from "react-redux";
+import {GlobalState} from "../store";
 
 const ExternalChat: React.FC = () => {
-  const jsSdk = useSelector<any>(state => state.jsSdk);
+  const jsSdk = useSelector<GlobalState>(state => state.jsSdk);
 
   const [loading, setLoading] = useState<boolean>()
   const [externalChat, setExternalChat] = useState<ExternalChatResponse['group_chat'] | void>()

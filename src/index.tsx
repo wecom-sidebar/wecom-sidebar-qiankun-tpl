@@ -14,7 +14,7 @@ import initQiankunMainApp from "./lib/utils/initQiankunMainApp";
 
 export const jsSdk = createJsSdk(wxResMock, invokeResMock);
 
-initQiankunMainApp();
+initQiankunMainApp(jsSdk);
 
 const AppWrapper = (
   <ConfigProvider locale={zhCN}>

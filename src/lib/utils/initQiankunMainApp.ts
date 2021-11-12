@@ -1,4 +1,5 @@
 import {initGlobalState, MicroAppStateActions, registerMicroApps, start} from "qiankun";
+import {JsSDK} from "../jsSdk";
 
 export const subAppContainerId = 'sub-app-container';
 export const subAppContainer = `#${subAppContainerId}`;
@@ -8,7 +9,7 @@ export const microAppStateActions: MicroAppStateActions = initGlobalState({
   msg: 'hello'
 });
 
-const initQiankunMainApp = () => {
+const initQiankunMainApp = (jsSdk: JsSDK) => {
   // 添加 state 变更
   microAppStateActions.onGlobalStateChange((state, prev) => {
     console.log('[主应用]', state, prev);
@@ -21,12 +22,18 @@ const initQiankunMainApp = () => {
       entry: '//localhost:3001',
       container: subAppContainer,
       activeRule: '/#/react-app',
+      props: {
+        jsSdk,
+      }
     },
     {
       name: 'sidebar-app',
       entry: '//localhost:3002',
       container: subAppContainer,
       activeRule: '/#/sidebar-app',
+      props: {
+        jsSdk,
+      }
     }
   ]);
 

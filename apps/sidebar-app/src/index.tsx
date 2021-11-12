@@ -34,9 +34,10 @@ export const mount = async (props: any) => {
   props.onGlobalStateChange((state: any) => {
     // 将 jsSdk 更新到 store 中
     store.dispatch({ type: 'SET_JSSDK', payload: state.jsSdk })
-    // 更新时，重新沉浸并获取 state
-    render({...props, globalState: state});
   });
+
+  // 更新 jsSdk
+  store.dispatch({ type: 'SET_JSSDK', payload: props.jsSdk })
 
   // props.setGlobalState(state);
   console.log('[微应用 sidebar-app] mount', props);
