@@ -1,17 +1,17 @@
 import React from 'react';
-import {BrowserRouter} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 import VerticalMenu from "./components/VerticalMenu";
 import RouterConfig from "./components/RouterConfig";
 import styles from './App.module.scss';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter basename={window.__POWERED_BY_QIANKUN__ ? '/sidebar-app' : '/'}>
       <div className={styles.app}>
         <VerticalMenu />
         <RouterConfig />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

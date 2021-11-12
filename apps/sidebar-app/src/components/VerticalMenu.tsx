@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import {Menu} from "antd";
 import {Link} from "react-router-dom";
 
-export const base = window.__POWERED_BY_QIANKUN__ ? '/#/sidebar-app' : '';
+export const base = window.__POWERED_BY_QIANKUN__ ? '/sidebar-app' : '/';
 
 const VerticalMenu: FC = () => {
   const handleClick = () => {};
@@ -16,16 +16,16 @@ const VerticalMenu: FC = () => {
       mode="inline"
     >
       <Menu.Item key="home">
-        <Link to={`${base}`}>首页</Link>
+        <Link to="/">首页</Link>
       </Menu.Item>
       <Menu.Item key="externalUser">
-        <Link to={`${base}/external-user`}>私聊</Link>
+        <Link to="/external-user">私聊</Link>
       </Menu.Item>
       <Menu.Item key="externalChat">
-        <Link to={`${base}/external-chat`}>群聊</Link>
+        <Link to="/external-chat">群聊</Link>
       </Menu.Item>
       <Menu.Item key="action">
-        <Link to={`${base}/action`}>操作</Link>
+        <Link to="/action">操作</Link>
       </Menu.Item>
     </Menu>
   )
