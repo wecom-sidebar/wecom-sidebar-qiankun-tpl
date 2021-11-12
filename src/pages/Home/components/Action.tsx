@@ -1,11 +1,11 @@
 import * as React from 'react'
 import {useCallback, useState} from 'react'
-import {jsSdk} from "../index";
+import {jsSdk} from "../../../index";
 import {Button, Input} from "antd";
 
 const {TextArea} = Input
 
-const Actions: React.FC = () => {
+const Action: React.FC = () => {
   const [msg, setMsg] = useState<string>('')
 
   const sendMsg = useCallback(async () => {
@@ -32,4 +32,4 @@ const Actions: React.FC = () => {
   )
 }
 
-export default Actions
+export default Action

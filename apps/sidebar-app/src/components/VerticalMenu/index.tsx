@@ -1,6 +1,6 @@
 import React, {CSSProperties, FC} from "react";
 import {Menu} from "antd";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import styles from './styles.module.scss';
 import {routes} from "../RouterConfig";
 
@@ -10,15 +10,17 @@ const menuStyle: CSSProperties = {
 }
 
 const VerticalMenu: FC = () => {
+  const location = useLocation();
+
   return (
     <Menu
       style={menuStyle}
       className={styles.menu}
-      defaultSelectedKeys={['home']}
+      defaultSelectedKeys={[location.pathname]}
       mode="vertical"
     >
       {routes.map(route => (
-        <Menu.Item className={styles.item} key={route.key}>
+        <Menu.Item className={styles.item} key={route.url}>
           <Link to={route.url}>{route.label}</Link>
         </Menu.Item>
       ))}

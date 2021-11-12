@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {useEffect, useState} from 'react'
-import {fetchExternalChat} from '../api'
-import {jsSdk} from "../index";
+import {fetchExternalChat} from '../../../api'
+import {jsSdk} from "../../../index";
 import {Spin} from "antd";
 
 const ExternalChat: React.FC = () => {

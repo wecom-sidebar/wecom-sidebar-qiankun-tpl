@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {useEffect, useState} from 'react'
-import {fetchExternalUser} from '../api'
-import {jsSdk} from "../index";
+import {fetchExternalUser} from '../../../api'
+import {jsSdk} from "../../../index";
 import {message, Spin} from "antd";
 
 // 性别Map

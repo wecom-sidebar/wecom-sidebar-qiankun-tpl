@@ -1,7 +1,10 @@
 import React, {FC, useEffect, useState} from "react";
 import Cookies from "js-cookie";
-import {fetchUser} from "../api";
+import {fetchUser} from "../../api";
 import {Spin} from "antd";
+import ExternalUser from "./components/ExternalUser";
+import ExternalChat from "./components/ExternalChat";
+import Action from "./components/Action";
 
 const Home: FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -26,6 +29,12 @@ const Home: FC = () => {
     <Spin spinning={loading}>
       <div>
         <h1>欢迎回来，{user ? user.name : ''}</h1>
+
+        <ExternalUser/>
+
+        <ExternalChat/>
+
+        <Action/>
       </div>
     </Spin>
   )
