@@ -1,15 +1,24 @@
 import {initGlobalState, MicroAppStateActions, registerMicroApps, start} from "qiankun";
 import {JsSDK} from "../jsSdk";
-
 export const subAppContainerId = 'sub-app-container';
 export const subAppContainer = `#${subAppContainerId}`;
 
 // 初始化 state
-export const microAppStateActions: MicroAppStateActions = initGlobalState({
-  msg: 'hello'
-});
+export const microAppStateActions: MicroAppStateActions = initGlobalState({});
 
+// 获取需要传递给微应用的 props
+const initPassProps = async (jsSdk: JsSDK) => {
+  const { chatId } = await jsSdk.invoke<{ chatId: string }>('getCurExternalChat');
+  return {
+    jsSdk,
+    isChat: !!chatId
+  }
+}
+
+// 启动 qiankun 的主应用
 const initQiankunMainApp = (jsSdk: JsSDK) => {
+  const passProps = initPassProps(jsSdk);
+
   // 添加 state 变更
   microAppStateActions.onGlobalStateChange((state, prev) => {
     console.log('[主应用]', state, prev);
@@ -22,18 +31,14 @@ const initQiankunMainApp = (jsSdk: JsSDK) => {
       entry: '//localhost:3001',
       container: subAppContainer,
       activeRule: '/#/react-app',
-      props: {
-        jsSdk,
-      }
+      props: passProps
     },
     {
       name: 'sidebar-app',
       entry: '//localhost:3002',
       container: subAppContainer,
       activeRule: '/#/sidebar-app',
-      props: {
-        jsSdk,
-      }
+      props: passProps
     }
   ]);
 

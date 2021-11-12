@@ -1,11 +1,6 @@
 import React, {FC} from "react";
 import {Menu} from "antd";
 import {useHistory} from 'react-router-dom'
-import {
-  FacebookOutlined,
-  HomeOutlined,
-  WechatOutlined
-} from "@ant-design/icons";
 import {Link} from "react-router-dom";
 
 const Nav: FC = () => {
@@ -13,13 +8,13 @@ const Nav: FC = () => {
 
   return (
     <Menu mode="horizontal" defaultSelectedKeys={[history.location.pathname]}>
-      <Menu.Item key="/" icon={<HomeOutlined/>}>
+      <Menu.Item key="/">
         <Link to="/">首页</Link>
       </Menu.Item>
-      <Menu.Item key="/sidebar-app" icon={<WechatOutlined />}>
+      <Menu.Item key="/sidebar-app">
         <Link to="/sidebar-app">sidebar-app</Link>
       </Menu.Item>
-      <Menu.Item key="/react-app" icon={<FacebookOutlined />}>
+      <Menu.Item key="/react-app">
         <Link to="/react-app">react-app</Link>
       </Menu.Item>
     </Menu>
