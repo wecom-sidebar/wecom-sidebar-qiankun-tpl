@@ -6,12 +6,14 @@ import styles from './App.module.scss';
 
 function App() {
   return (
-    <HashRouter basename={window.__POWERED_BY_QIANKUN__ ? '/sidebar-app' : '/'}>
-      <div className={styles.app}>
+    <div className={styles.app}>
+      <HashRouter basename={window.__POWERED_BY_QIANKUN__ ? '/sidebar-app' : '/'}>
         <VerticalMenu />
-        <RouterConfig />
-      </div>
-    </HashRouter>
+        <main className={styles.main}>
+          <RouterConfig />
+        </main>
+      </HashRouter>
+    </div>
   );
 }
 
