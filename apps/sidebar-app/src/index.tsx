@@ -1,16 +1,20 @@
 import './public-path'
 import {ConfigProvider} from "antd";
 import React from 'react';
+import {Provider} from "react-redux";
 import ReactDOM from 'react-dom';
 import App from './App';
 // 由于 antd 组件的默认文案是英文，所以需要修改为中文
 import zhCN from 'antd/lib/locale/zh_CN';
 
 import 'antd/dist/antd.css';
+import store from "./store";
 
 const AppWrapper = (
   <ConfigProvider locale={zhCN}>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </ConfigProvider>
 );
 
@@ -28,14 +32,10 @@ export const bootstrap = async () => {
 
 export const mount = async (props: any) => {
   props.onGlobalStateChange((state: any) => {
-    // state: 变更后的状态; prev 变更前的状态
-    console.log('微应用', state.jssdk);
-    state.jsSdk.invoke('sendChatMessage', {
-      msgtype: 'text',
-      text: {
-        content: 'hello'
-      }
-    });
+    // 将 jsSdk 更新到 store 中
+    store.dispatch({ type: 'SET_JSSDK', payload: state.jsSdk })
+    // 更新时，重新沉浸并获取 state
+    render({...props, globalState: state});
   });
 
   // props.setGlobalState(state);
