@@ -5,6 +5,7 @@ import {Spin} from "antd";
 import ExternalUser from "./components/ExternalUser";
 import ExternalChat from "./components/ExternalChat";
 import Action from "./components/Action";
+import MicroAppComponent from "./components/MicroAppComponent";
 
 const Home: FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -35,6 +36,9 @@ const Home: FC = () => {
         <ExternalChat/>
 
         <Action/>
+
+        {/* 手动加载微应用 */}
+        <MicroAppComponent user={user}/>
       </div>
     </Spin>
   )

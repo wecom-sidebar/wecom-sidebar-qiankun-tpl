@@ -26,7 +26,7 @@ const Action: React.FC = () => {
       <TextArea style={{width: '100%'}} value={msg} onChange={e => setMsg(e.target.value)}/>
 
       <Button type="primary" onClick={sendMsg}>
-        sendChatMessage
+        发送
       </Button>
     </div>
   )

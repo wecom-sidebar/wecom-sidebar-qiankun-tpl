@@ -2,7 +2,7 @@ import * as React from 'react'
 import {useEffect, useState} from 'react'
 import {fetchExternalChat} from '../../../api'
 import {jsSdk} from "../../../index";
-import {Spin} from "antd";
+import {Button, Spin} from "antd";
 
 const ExternalChat: React.FC = () => {
   const [loading, setLoading] = useState<boolean>()
@@ -45,9 +45,9 @@ const ExternalChat: React.FC = () => {
             <ul>
               {externalChat.member_list.map(m => (
                 <li key={m.userid}>
-                  <a onClick={() => openUserProfile(m.userid, m.type)}>
+                  <Button type="link" onClick={() => openUserProfile(m.userid, m.type)}>
                     {m.userid}
-                  </a>
+                  </Button>
                 </li>
               ))}
             </ul>

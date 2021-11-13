@@ -16,6 +16,10 @@ export const bootstrap = async () => {
 }
 
 export const mount = async (props: any) => {
+  props.onGlobalStateChange((state: any) => {
+    console.log('[微应用 react-app] onGlobalStateChange', state);
+  });
+
   console.log('[微应用 react-app] mount', props);
   render(props);
 }
