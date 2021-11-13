@@ -92,10 +92,11 @@ npm run start
 微应用为原有项目新增的内容，添加了 `react-app` 和 `sidebar-app` 两个。
 
 对于 `react-app`，这只是一个纯净的 React 项目，仅在入口 `index.tsx` 里添加了与主应用对接所需要的生命周期回调。
-你可以在这个纯净的项目里开始编写你的侧边栏应用。
+你可以在这个纯净的项目里开始编写你的侧边栏应用。你可以 [点击这里](./apps/react-app/README.md) 了解更多内容。
 
 对于 `sidebar-app`，这算是我自己写的一个侧边栏微应用，除了在入口 `index.tsx` 添加生命周期回调，还将主应用的数据存于 redux store 中，
 同时，添加了 React Router，分别对于 4 个页面组件：Home, ExternalChat, ExternalUser, Action。你可以以这个微应用为模板一步步实现自己的微应用。
+你可以 [点击这里](./apps/sidebar-app/README.md) 了解更多内容。
 
 ## 一些问题
 
