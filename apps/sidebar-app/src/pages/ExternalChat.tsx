@@ -6,7 +6,7 @@ import {useSelector} from "react-redux";
 import {GlobalState} from "../store";
 
 const ExternalChat: React.FC = () => {
-  const jsSdk = useSelector<GlobalState>(state => state.jsSdk);
+  const jsSdk: any = useSelector<GlobalState>(state => state.jsSdk);
 
   const [loading, setLoading] = useState<boolean>()
   const [externalChat, setExternalChat] = useState<ExternalChatResponse['group_chat'] | void>()
@@ -14,8 +14,7 @@ const ExternalChat: React.FC = () => {
   const getExternalChatInfo = async () => {
     if (!jsSdk) return
 
-    // @ts-ignore
-    const res = await jsSdk.invoke<{chatId?: string}>('getCurExternalChat', {})
+    const res = await jsSdk.invoke('getCurExternalChat', {})
 
     if (!res || !res.chatId) return
 

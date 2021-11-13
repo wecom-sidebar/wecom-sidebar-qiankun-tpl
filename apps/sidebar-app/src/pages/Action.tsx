@@ -6,7 +6,7 @@ import {useSelector} from "react-redux";
 const {TextArea} = Input
 
 const Actions: React.FC = () => {
-  const jsSdk = useSelector<any>(state => state.jsSdk);
+  const jsSdk: any = useSelector<any>(state => state.jsSdk);
 
   const [msg, setMsg] = useState<string>('')
 
@@ -14,7 +14,6 @@ const Actions: React.FC = () => {
     if (!msg) alert('消息不能为空')
     if (!jsSdk) return
 
-    // @ts-ignore
     await jsSdk.invoke('sendChatMessage', {
       msgtype: 'text',
       text: {

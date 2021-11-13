@@ -4,7 +4,7 @@ export interface GlobalState {
   jsSdk: any;
 }
 
-// 初始全局状态
+// 初始全局状态（当独立运行项目时，可以 Mock 此 state）
 const initState: GlobalState = {
   jsSdk: null,
 }

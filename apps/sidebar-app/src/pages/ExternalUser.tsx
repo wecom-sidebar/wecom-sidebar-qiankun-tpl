@@ -8,15 +8,15 @@ import {useSelector} from "react-redux";
 const genderMap = ['未定义', '男', '女']
 
 const ExternalUser: React.FC = () => {
-  const jsSdk = useSelector<any>(state => state.jsSdk);
+  const jsSdk: any = useSelector<any>(state => state.jsSdk);
 
   const [loading, setLoading] = useState<boolean>(true)
   const [externalUser, setExternalUser] = useState<ExternalUserResponse['external_contact'] | void>()
 
   const getExternalUserInfo = async () => {
     if (!jsSdk) return;
-    // @ts-ignore
-    const res = await jsSdk.invoke<{ userId?: string }>('getCurExternalContact', {})
+
+    const res = await jsSdk.invoke('getCurExternalContact', {})
 
     if (!res || !res.userId) return
 
