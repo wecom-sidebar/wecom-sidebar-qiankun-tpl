@@ -6,8 +6,8 @@ import './index.css';
 
 // 渲染函数
 const render = (props: any) => {
-  const { container } = props;
-  ReactDOM.render(<App />, container ? container.querySelector('#root') : document.querySelector('#root'));
+  const { container, user } = props;
+  ReactDOM.render(<App user={user} />, container ? container.querySelector('#root') : document.querySelector('#root'));
 }
 
 // qiankun 微应用的导出函数
@@ -18,6 +18,10 @@ export const bootstrap = async () => {
 export const mount = async (props: any) => {
   props.onGlobalStateChange((state: any) => {
     console.log('[微应用 react-app] onGlobalStateChange', state);
+    render({
+      ...props,
+      ...state,
+    })
   });
 
   console.log('[微应用 react-app] mount', props);
