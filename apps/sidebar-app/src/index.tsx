@@ -39,7 +39,6 @@ export const mount = async (props: any) => {
   // 更新 jsSdk
   store.dispatch({ type: 'SET_JSSDK', payload: props.jsSdk })
 
-  // props.setGlobalState(state);
   console.log('[微应用 sidebar-app] mount', props);
   render(props);
 }
@@ -50,7 +49,6 @@ export const unmount = async (props: any) => {
   ReactDOM.unmountComponentAtNode(container ? container.querySelector('#root') : document.querySelector('#root'));
 }
 
-// @ts-ignore
 if (!window.__POWERED_BY_QIANKUN__) {
   render({});
 }
