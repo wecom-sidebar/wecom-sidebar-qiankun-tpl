@@ -7,10 +7,9 @@ import App from './App'
 import {fetchUserId, fetchSignatures} from './api'
 import config from './_config'
 import {invokeResMock, mockUserId, wxResMock} from "./mock";
-import {checkRedirect, createJsSdk, initSdk} from "./lib";
+import {checkRedirect, createJsSdk, initSdk, initQiankunMainApp} from "./lib";
 
 import 'antd/dist/antd.css';
-import initQiankunMainApp from "./lib/utils/initQiankunMainApp";
 
 export const jsSdk = createJsSdk(wxResMock, invokeResMock);
 
