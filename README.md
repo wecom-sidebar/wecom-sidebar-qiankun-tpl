@@ -48,13 +48,30 @@
 
 ![](./screenshots/mind-graph.png)
 
+## 前置知识
+
+说了那么多，不如先启动来玩玩。但是，由于企业微信侧边栏是一个非常复杂的开发环境，而且业务名词也比较多，
+所以，你需要了解一些前置知识，才能跑起本项目。
+
+不过，不要慌，你要了解的前置知识我都帮你准备好了，请继续往下看~
+
+### 前端：config 配置、代理、Mock、@%$!@#$*&^%
+
+这是每个侧边栏初学者都会面临的问题：如何本地开发？侧边栏应用模板在哪里？
+
+不要慌，我已经写好了一个侧边栏前端开发模板 [wecom-sidebar-react-tpl](https://github.com/wecom-sidebar/wecom-sidebar-react-tpl) 了，
+而这个项目也是基于它来开发的，所以想要配置本地开发环境和初始化项目，直接按照上面的 `README.md` 一步步配置就好了。
+
+如果你对一些概念还不是很清楚，比如 `外部联系人`，`JsSdk`。那我也写了一个简易的教程 [wecom-sidebar-docs](https://wecom-sidebar.github.io/wecom-sidebar-docs/) ，
+可以大概过一下里面的内容，有了大概印象再来开始开发。
+
+### 后端：转发企业微信 API、@%$!@#$*&^%
+
+在运行这个项目前，你需要一个后端（Node）来转发企业微信的后端 API，以及生成 JS-SDK 的签名。
+
+不过，不用太担心，我已经写好了一个 Node 端的开发模板，具体请查看 [wecom-sidebar-express-tpl](https://github.com/wecom-sidebar/wecom-sidebar-express-tpl) 。
+
 ## 启动项目
-
-本项目是基于 [wecom-sidebar-react-tpl](https://github.com/wecom-sidebar/wecom-sidebar-react-tpl) 这个项目来开发的，
-所有的 `config 配置`，`代理配置`，`Mock` 都可以参照这个项目的 `README.md`，这里就不再赘述了。
-
-当你按照 [wecom-sidebar-react-tpl](https://github.com/wecom-sidebar/wecom-sidebar-react-tpl) README.md 的配置后，
-你就可以启动这个项目啦。
 
 启动主应用，在 http://localhost:3000 运行。
 
@@ -78,7 +95,7 @@ cd ./apps/sidebar-app
 npm run start
 ```
 
-## 如何使用
+## 项目这么大，该从哪看看起
 
 项目的主应用是基于 [wecom-sidebar-react-tpl](https://github.com/wecom-sidebar/wecom-sidebar-react-tpl) 项目来修改，
 所以关于 `代理配置`, `应用配置`, `Mock 功能` 等都可以查看这个项目来了解更多。
@@ -89,7 +106,7 @@ npm run start
 
 ### 微应用
 
-微应用为原有项目新增的内容，添加了 `react-app` 和 `sidebar-app` 两个。
+微应用为原有项目新增的内容，添加了 `react-app` 和 `sidebar-app` 两个微应用项目，它们都放在 [./apps 目录下](./apps) ，。
 
 对于 `react-app`，这只是一个纯净的 React 项目，仅在入口 `index.tsx` 里添加了与主应用对接所需要的生命周期回调。
 你可以在这个纯净的项目里开始编写你的侧边栏应用。你可以 [点击这里](./apps/react-app/README.md) 了解更多内容。
