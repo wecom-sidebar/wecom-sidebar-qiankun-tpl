@@ -1,4 +1,4 @@
-# wecom-sidebar-micro-frontend
+# wecom-sidebar-qiankun-tpl
 
 此项目为企业微信侧边栏 + qiankun 微前端框架的实践模板。
 
