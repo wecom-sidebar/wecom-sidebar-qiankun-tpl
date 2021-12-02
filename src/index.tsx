@@ -20,6 +20,6 @@ const AppWrapper = (
 )
 
 checkRedirect(config, fetchUserId, mockUserId) // 重定向获取 code（用户身份）
-  .then(() => initSdk(config, fetchSignatures)) // 初始化 JsSdk
+  .then(() => initSdk(jsSdk, config, fetchSignatures)) // 初始化 JsSdk
   .then(() => initQiankunMainApp(jsSdk)) // 初始化主应用，并注册好微应用
   .then(() => ReactDOM.render(AppWrapper, document.getElementById('root'))) // 渲染主应用内容
