@@ -14,15 +14,19 @@ const ExternalChat: React.FC = () => {
   const getExternalChatInfo = async () => {
     if (!jsSdk) return
 
-    const res = await jsSdk.invoke('getCurExternalChat', {})
+    try {
+      const res = await jsSdk.invoke('getCurExternalChat', {})
 
-    if (!res || !res.chatId) return
+      if (!res || !res.chatId) return
 
-    console.log('外部联系群 ID', res.chatId);
+      console.log('外部联系群 ID', res.chatId);
 
-    const chatInfo = await fetchExternalChat(res.chatId || '').catch(e => console.error(e))
+      const chatInfo = await fetchExternalChat(res.chatId || '').catch(e => console.error(e))
 
-    setExternalChat(chatInfo)
+      setExternalChat(chatInfo)
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   useEffect(() => {

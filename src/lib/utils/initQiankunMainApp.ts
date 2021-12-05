@@ -8,10 +8,17 @@ export const microAppStateActions: MicroAppStateActions = initGlobalState({});
 
 // 获取需要传递给微应用的 props
 const initPassProps = async (jsSdk: JsSDK) => {
-  const res = await jsSdk.invoke<{ chatId: string }>('getCurExternalChat');
-  return {
-    jsSdk,
-    isChat: !!res
+  try {
+    const res = await jsSdk.invoke<{ chatId: string }>('getCurExternalChat');
+    return {
+      jsSdk,
+      isChat: !!res
+    }
+  } catch (e) {
+    return {
+      jsSdk,
+      isChat: false,
+    }
   }
 }
 
