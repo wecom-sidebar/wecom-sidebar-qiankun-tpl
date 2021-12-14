@@ -21,8 +21,8 @@ const MicroAppComponent: FC<Props> = (props) => {
     // 初始化微应用
     if (containerRef.current) {
       microAppComponent = loadMicroApp({
-        name: 'react-app-nested',
-        entry: '//localhost:3001',
+        name: 'api-test-nested',
+        entry: '//wecom-sidebar-api-test.thedemo.cn',
         container: containerRef.current,
         props,
       });

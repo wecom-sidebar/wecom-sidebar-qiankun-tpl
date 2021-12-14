@@ -14,8 +14,8 @@ const Nav: FC = () => {
       <Menu.Item key="/sidebar-app">
         <Link to="/sidebar-app">sidebar-app</Link>
       </Menu.Item>
-      <Menu.Item key="/react-app">
-        <Link to="/react-app">react-app</Link>
+      <Menu.Item key="/api-test">
+        <Link to="/api-test">api-test</Link>
       </Menu.Item>
     </Menu>
   )

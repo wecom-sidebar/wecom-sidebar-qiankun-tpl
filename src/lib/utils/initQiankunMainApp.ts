@@ -34,10 +34,10 @@ const initQiankunMainApp = async (jsSdk: JsSDK) => {
   // 注册并启动微前端
   registerMicroApps([
     {
-      name: 'react-app',
-      entry: '//localhost:3001',
+      name: 'api-test',
+      entry: '//wecom-sidebar-api-test.thedemo.cn',
       container: subAppContainer,
-      activeRule: '/#/react-app',
+      activeRule: '/#/api-test',
       props: passProps
     },
     {
