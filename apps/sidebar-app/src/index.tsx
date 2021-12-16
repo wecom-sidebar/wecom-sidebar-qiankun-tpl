@@ -33,11 +33,11 @@ export const bootstrap = async () => {
 export const mount = async (props: any) => {
   props.onGlobalStateChange((state: any) => {
     // 将 jsSdk 更新到 store 中
-    store.dispatch({ type: 'SET_JSSDK', payload: state.jsSdk })
+    store.dispatch({ type: 'SET_ENTRY', payload: state.entry })
   });
 
   // 更新 jsSdk
-  store.dispatch({ type: 'SET_JSSDK', payload: props.jsSdk })
+  store.dispatch({ type: 'SET_ENTRY', payload: props.entry })
 
   console.log('[微应用 sidebar-app] mount', props);
   render(props);

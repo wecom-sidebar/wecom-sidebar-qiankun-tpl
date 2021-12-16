@@ -2,21 +2,17 @@ import * as React from 'react'
 import {useEffect, useState} from 'react'
 import {fetchExternalUser} from '../api'
 import {Button, message, Spin} from "antd";
-import {useSelector} from "react-redux";
+import {invoke} from "wecom-sidebar-jssdk";
 
 // 性别Map
 const genderMap = ['未定义', '男', '女']
 
 const ExternalUser: React.FC = () => {
-  const jsSdk: any = useSelector<any>(state => state.jsSdk);
-
   const [loading, setLoading] = useState<boolean>(true)
   const [externalUser, setExternalUser] = useState<ExternalUserResponse['external_contact'] | void>()
 
   const getExternalUserInfo = async () => {
-    if (!jsSdk) return;
-
-    const res = await jsSdk.invoke('getCurExternalContact', {})
+    const res = await invoke('getCurExternalContact', {})
 
     if (!res || !res.userId) return
 
@@ -37,9 +33,7 @@ const ExternalUser: React.FC = () => {
       return message.warn('找不到外部联系人');
     }
 
-    if (!jsSdk) return
-    // @ts-ignore
-    return jsSdk.invoke('openUserProfile', {
+    return invoke('openUserProfile', {
       userid: externalUser.external_userid,
       type: externalUser.type
     })

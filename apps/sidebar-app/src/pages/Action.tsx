@@ -1,20 +1,17 @@
 import * as React from 'react'
 import {useCallback, useState} from 'react'
 import {Button, Input} from "antd";
-import {useSelector} from "react-redux";
+import {invoke} from "wecom-sidebar-jssdk";
 
 const {TextArea} = Input
 
 const Actions: React.FC = () => {
-  const jsSdk: any = useSelector<any>(state => state.jsSdk);
-
   const [msg, setMsg] = useState<string>('')
 
   const sendMsg = useCallback(async () => {
     if (!msg) alert('消息不能为空')
-    if (!jsSdk) return
-
-    await jsSdk.invoke('sendChatMessage', {
+    await invoke('sendChatMessage', {
+      enterChat: true,
       msgtype: 'text',
       text: {
         content: msg

@@ -1,5 +1,5 @@
 import {initGlobalState, MicroAppStateActions, registerMicroApps, start} from "qiankun";
-import {JsSDK} from "../jsSdk";
+import {invoke} from "wecom-sidebar-jssdk";
 export const subAppContainerId = 'sub-app-container';
 export const subAppContainer = `#${subAppContainerId}`;
 
@@ -7,24 +7,22 @@ export const subAppContainer = `#${subAppContainerId}`;
 export const microAppStateActions: MicroAppStateActions = initGlobalState({});
 
 // 获取需要传递给微应用的 props
-const initPassProps = async (jsSdk: JsSDK) => {
+const initPassProps = async () => {
   try {
-    const res = await jsSdk.invoke<{ chatId: string }>('getCurExternalChat');
+    const context = await invoke('getContext');
     return {
-      jsSdk,
-      isChat: !!res
+      entry: context.entry
     }
   } catch (e) {
     return {
-      jsSdk,
-      isChat: false,
+      entry: 'error',
     }
   }
 }
 
 // 启动 qiankun 的主应用
-const initQiankunMainApp = async (jsSdk: JsSDK) => {
-  const passProps = await initPassProps(jsSdk);
+const initQiankunMainApp = async () => {
+  const passProps = await initPassProps();
 
   // 添加 state 变更监听
   microAppStateActions.onGlobalStateChange((state, prev) => {

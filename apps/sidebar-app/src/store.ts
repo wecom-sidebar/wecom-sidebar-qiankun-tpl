@@ -1,19 +1,19 @@
 import {createStore, Reducer} from "redux";
 
 export interface GlobalState {
-  jsSdk: any;
+  entry: string;
 }
 
 // 初始全局状态（当独立运行项目时，可以 Mock 此 state）
 const initState: GlobalState = {
-  jsSdk: null,
+  entry: '',
 }
 
 // 全局状态的 reducer
 const reducer: Reducer = (state = initState, action) => {
   switch (action.type) {
-    case 'SET_JSSDK':
-      return {...state, jsSdk: action.payload}
+    case 'SET_ENTRY':
+      return {...state, entry: action.payload}
     default:
       return state;
   }

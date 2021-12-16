@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {useCallback, useState} from 'react'
-import {jsSdk} from "../../../index";
 import {Button, Input} from "antd";
+import {invoke} from "wecom-sidebar-jssdk";
 
 const {TextArea} = Input
 
@@ -11,7 +11,8 @@ const Action: React.FC = () => {
   const sendMsg = useCallback(async () => {
     if (!msg) alert('消息不能为空')
 
-    await jsSdk.invoke('sendChatMessage', {
+    await invoke('sendChatMessage', {
+      enterChat: true,
       msgtype: 'text',
       text: {
         content: msg

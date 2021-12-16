@@ -1,15 +1,15 @@
 /// <reference types="react-scripts" />
-import {JsSDK} from "./lib/jsSdk";
+import {InvokeResMock, WxResMock} from "wecom-sidebar-jssdk";
 
 declare global {
   interface Window {
     // 外部控制是否为 mock
-    isMock?: boolean;
+    _isMock?: boolean;
     // mock userId
-    mockUserId: string,
+    _mockUserId: string,
     // wx.invoke 里的 Mock 关系表，apiName -> result
-    invokeResMock?: Partial<JsSDK>;
+    _invokeResMock?: InvokeResMock;
     // 企业微信的 JsSdk 的 Mock 关系表，fnName -> result
-    wxResMock?: Partial<JsSDK>;
+    _wxResMock?: WxResMock;
   }
 }

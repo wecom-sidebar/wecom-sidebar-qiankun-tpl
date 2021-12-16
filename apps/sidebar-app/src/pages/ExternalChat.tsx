@@ -2,20 +2,15 @@ import * as React from 'react'
 import {useEffect, useState} from 'react'
 import {fetchExternalChat} from '../api'
 import {Spin} from "antd";
-import {useSelector} from "react-redux";
-import {GlobalState} from "../store";
+import {invoke} from "wecom-sidebar-jssdk";
 
 const ExternalChat: React.FC = () => {
-  const jsSdk: any = useSelector<GlobalState>(state => state.jsSdk);
-
   const [loading, setLoading] = useState<boolean>()
   const [externalChat, setExternalChat] = useState<ExternalChatResponse['group_chat'] | void>()
 
   const getExternalChatInfo = async () => {
-    if (!jsSdk) return
-
     try {
-      const res = await jsSdk.invoke('getCurExternalChat', {})
+      const res = await invoke('getCurExternalChat', {})
 
       if (!res || !res.chatId) return
 

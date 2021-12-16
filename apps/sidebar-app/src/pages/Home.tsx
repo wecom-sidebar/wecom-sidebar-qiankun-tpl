@@ -2,8 +2,12 @@ import React, {FC, useEffect, useState} from "react";
 import Cookies from "js-cookie";
 import {fetchUser} from "../api";
 import {Spin} from "antd";
+import {useSelector} from "react-redux";
+import {GlobalState} from "../store";
 
 const Home: FC = () => {
+  const entry = useSelector<GlobalState, string>(store => store.entry);
+
   const [loading, setLoading] = useState<boolean>(false);
   const [user, setUser] = useState<UserResponse>();
 
@@ -26,6 +30,7 @@ const Home: FC = () => {
     <Spin spinning={loading}>
       <div>
         <h1>欢迎回来，{user ? user.name : ''}</h1>
+        <p>{entry}</p>
       </div>
     </Spin>
   )
